@@ -1,60 +1,76 @@
-# AppIconIndex
+# AppStoreLookup
 
-App StoreのURLからアプリアイコンを簡単に取得するコマンドラインツールです。
+A command-line tool to easily retrieve app information and icons from the App Store URL.
 
-## 概要
+## Overview
 
-AppIconIndexは、App StoreのURLを指定するだけで、そのアプリの情報（バンドルID、アプリ名）と高解像度アイコン画像を取得できるシンプルなツールです。取得したアイコンは指定したディレクトリに保存されます。
+AppStoreLookup is a simple tool that allows you to get app information (bundle ID, app name) and high-resolution icon images by just specifying an App Store URL. The retrieved icons are saved to a specified directory.
 
-## 機能
+## Features
 
-- App StoreのURLからアプリIDを抽出
-- iTunes Lookup APIを使用してアプリ情報を取得
-- アプリアイコン（512px）のダウンロードと保存
-- バンドルIDやアプリ名などの基本情報の表示
+- Extract app IDs from App Store URLs
+- Retrieve app information using iTunes Lookup API
+- Download and save app icons (512px)
+- Save files with names based on bundle ID
 
-## インストール
+## Installation
+
+### Method 1: Clone and Build
 
 ```bash
-git clone https://github.com/noppefoxwolf/AppIconIndex.git
-cd AppIconIndex
+git clone https://github.com/noppefoxwolf/AppStoreLookup.git
+cd AppStoreLookup
 swift build -c release
-sudo cp .build/release/AppIconIndex /usr/local/bin/
+sudo cp .build/release/appstore-lookup /usr/local/bin/
 ```
 
-または Swift Package Managerを利用して直接実行:
+### Method 2: Using experimental-install
+
+You can install AppStoreLookup directly using Swift's experimental-install feature:
 
 ```bash
-swift run AppIconIndex [引数]
+swift experimental-install noppefoxwolf/AppStoreLookup
 ```
 
-## 使い方
+This will download the package, build it, and install the executable in a location where it can be accessed from your terminal.
+
+### Method 3: Direct Run with Swift Package Manager
 
 ```bash
-swift run AppIconIndex https://apps.apple.com/jp/app/アプリ名/id番号 --output 保存先ディレクトリ
+swift run appstore-lookup [arguments]
 ```
 
-### 例
+## Usage
 
 ```bash
-swift run AppIconIndex https://apps.apple.com/jp/app/twitter/id333903271 --output icons
+appstore-lookup <App Store URL> --output <destination directory>
 ```
 
-上記コマンドを実行すると:
-1. TwitterアプリのIDを抽出
-2. アプリ情報を取得して表示
-3. 512pxサイズのアイコンを「icons」ディレクトリに保存（ディレクトリがない場合は自動作成）
+### Example
 
-## 要件
+```bash
+appstore-lookup https://apps.apple.com/jp/app/twitter/id333903271 --output icons
+```
 
-- Swift 6.0
-- macOS 13
+When you run the above command:
+1. The Twitter app ID is extracted
+2. App information is retrieved
+3. 512px size icon is saved to the "icons" directory
+4. The file is saved with the app's bundle ID as the filename.png
 
-## ライセンス
+## Requirements
 
-MITライセンス
+- Swift 6.1 or later
+- macOS 13 or later
+- Dependencies:
+  - swift-argument-parser
+  - swift-http-types
 
-## 作者
+## License
+
+MIT License
+
+## Author
 
 [@noppefoxwolf](https://github.com/noppefoxwolf)
 
