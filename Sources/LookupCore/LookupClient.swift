@@ -22,7 +22,7 @@ extension URLSession {
                 URLQueryItem(name: "id", value: id)
             ])
         let request = HTTPRequest(url: url)
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, response) = try await self.data(for: request)
         
         let decoder = JSONDecoder()
         let lookupResponse = try decoder.decode(LookupResponse.self, from: data)
