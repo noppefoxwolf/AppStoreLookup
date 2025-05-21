@@ -2,6 +2,10 @@ import Foundation
 import HTTPTypesFoundation
 import HTTPTypes
 
+#if canImport(FoundationNetworking)
+    import FoundationNetworking
+#endif
+
 public struct AppInfo: Codable {
     public let bundleId: String
     public let trackName: String

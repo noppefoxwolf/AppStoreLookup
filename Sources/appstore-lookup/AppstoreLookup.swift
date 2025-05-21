@@ -3,6 +3,10 @@ import ArgumentParser
 import RegexBuilder
 import LookupCore
 
+#if canImport(FoundationNetworking)
+    import FoundationNetworking
+#endif
+
 struct AppstoreLookup: AsyncParsableCommand {
     static let configuration = CommandConfiguration(
         commandName: "app-icon-fetcher",
